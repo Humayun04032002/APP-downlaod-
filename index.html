@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GraamBazaar — Official App</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div id="cursor"></div>
+  <div id="cursor-ring"></div>
+  <div class="bg-canvas"></div>
+  <canvas id="particle-canvas"></canvas>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <main class="page">
+    <header class="hero-section">
+      <div class="badge-premium">PREMIUM ACCESS</div>
+      <h1 class="hero-title">Graam<span>Bazaar</span></h1>
+      <p class="hero-subtitle">খাঁটি পণ্য ও দ্রুততম ডেলিভারির প্রিমিয়াম প্ল্যাটফর্ম।</p>
+    </header>
+
+    <div class="cards-grid">
+      
+      <div class="premium-card locked" id="card-main">
+        <div class="card-glow"></div>
+        <div class="card-header">
+          <div class="app-icon-box grayscale">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="app-meta">
+            <h3>গ্রামবাজার অ্যাপ</h3>
+            <span class="version-tag">Coming Soon</span>
+          </div>
+        </div>
+        
+        <div class="card-body">
+          <p class="status-msg">আমাদের মূল অ্যাপটি বর্তমানে ডেভেলপমেন্ট মোডে আছে। খুব শীঘ্রই এটি প্লে-স্টোরে উন্মুক্ত করা হবে।</p>
+        </div>
+
+        <button class="x-download-btn disabled" disabled>
+          <span class="btn-text">Stay Tuned</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </button>
+      </div>
+
+      <div class="premium-card rider-card" id="card-rider">
+        <div class="card-glow"></div>
+        <div class="card-header">
+          <div class="app-icon-box rider">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polyline points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <div class="app-meta">
+            <h3>রাইডার</h3>
+            <span class="version-tag beta">v1.2.0 Stable</span>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="feature-item">
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+            <span>Real-time Map tracking</span>
+          </div>
+          <div class="feature-item">
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <span>Super light & Fast</span>
+          </div>
+          <div class="feature-item">
+            <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <span>Low battery consume</span>
+          </div>
+        </div>
+
+        <a href="src/apk/rider.apk" download class="x-download-btn rider-btn">
+          <span class="btn-text">Download Rider APK</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <script type="module">
+    import { initCursor, initParticles } from './effects.js';
+    document.addEventListener('DOMContentLoaded', () => {
+      initCursor();
+      initParticles();
+      
+      const cards = document.querySelectorAll('.premium-card');
+      cards.forEach((card, index) => {
+        setTimeout(() => card.classList.add('visible'), 300 * (index + 1));
+      });
+    });
+  </script>
+</body>
+</html>

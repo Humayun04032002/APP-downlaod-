@@ -1,0 +1,98 @@
+:root {
+  --brand: #059669;
+  --brand-light: #10b981;
+  --rider-color: #f59e0b;
+  --bg-dark: #050a10;
+  --white: #ffffff;
+  --text-soft: #94a3b8;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--white);
+  font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* --- BG EFFECTS --- */
+.bg-canvas { position: fixed; inset: 0; z-index: -3; background: radial-gradient(circle at 50% 50%, #0f172a 0%, #050a10 100%); }
+#particle-canvas { position: fixed; inset: 0; z-index: -2; opacity: 0.4; pointer-events: none; }
+.orb { position: fixed; border-radius: 50%; filter: blur(100px); z-index: -1; opacity: 0.12; pointer-events: none; }
+.orb-1 { top: -10%; right: -10%; width: 40vw; height: 40vw; background: var(--brand); }
+.orb-2 { bottom: -10%; left: -10%; width: 35vw; height: 35vw; background: var(--rider-color); }
+
+/* --- HERO --- */
+.hero-section { text-align: center; padding: 60px 20px 20px; }
+.hero-title { font-size: 3.5rem; font-weight: 800; letter-spacing: -1px; }
+.hero-title span { color: var(--brand); }
+.hero-subtitle { color: var(--text-soft); margin-top: 10px; font-size: 1.1rem; }
+.badge-premium { display: inline-block; padding: 5px 15px; background: var(--brand-glow); border: 1px solid var(--brand); border-radius: 20px; color: var(--brand); font-size: 0.75rem; font-weight: 700; margin-bottom: 15px; }
+
+/* --- CARDS GRID --- */
+.cards-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; padding: 40px 20px; max-width: 1100px; margin: 0 auto; }
+
+.premium-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 35px;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+  opacity: 0;
+  transform: translateY(30px);
+}
+.premium-card.visible { opacity: 1; transform: translateY(0); }
+.premium-card:hover { border-color: var(--brand-light); transform: translateY(-10px) scale(1.02); box-shadow: 0 30px 60px rgba(0,0,0,0.4); }
+
+.card-header { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; }
+.app-icon-box { width: 60px; height: 60px; background: var(--brand); border-radius: 16px; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 10px 20px rgba(5, 150, 105, 0.3); }
+.app-icon-box.rider { background: var(--rider-color); box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3); }
+.app-icon-box svg { width: 32px; height: 32px; }
+
+.app-meta h3 { font-size: 1.4rem; margin-bottom: 5px; }
+.version-tag { font-size: 0.75rem; background: rgba(255,255,255,0.1); padding: 3px 10px; border-radius: 8px; color: var(--text-soft); }
+.version-tag.beta { color: var(--rider-color); background: rgba(245, 158, 11, 0.1); }
+
+.card-body { margin-bottom: 35px; }
+.feature-item { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--text-soft); font-size: 0.95rem; }
+.feat-icon { width: 18px; color: var(--brand-light); }
+.rider-card .feat-icon { color: var(--rider-color); }
+
+/* --- DOWNLOAD BUTTON --- */
+.x-download-btn {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  background: var(--brand);
+  color: white;
+  padding: 18px;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: all 0.3s;
+  border: none;
+  width: 100%;
+}
+.x-download-btn:hover { background: var(--brand-light); transform: scale(1.02); }
+.rider-btn { background: var(--rider-color); }
+.rider-btn:hover { background: #fbbf24; }
+.btn-icon { width: 22px; transition: transform 0.3s; }
+.x-download-btn:hover .btn-icon { transform: translateY(3px); }
+
+/* --- CURSOR --- */
+#cursor, #cursor-ring { position: fixed; pointer-events: none; z-index: 9999; border-radius: 50%; transform: translate(-50%, -50%); }
+#cursor { width: 6px; height: 6px; background: var(--brand); }
+#cursor-ring { width: 40px; height: 40px; border: 2px solid var(--brand); opacity: 0.3; }
+
+@media (max-width: 600px) {
+  .hero-title { font-size: 2.5rem; }
+  .premium-card { padding: 25px; }
+}
